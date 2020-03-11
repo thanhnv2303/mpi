@@ -12,7 +12,6 @@ from prettytable import PrettyTable
 t = PrettyTable(["Amount(element)",'Size(bytes)', 'Time(s)','Rate (MB/s)'])
 i=1
 
-
 while(i<=2*10**6):
     global data
     global wt1
