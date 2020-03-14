@@ -22,8 +22,6 @@ while(i<=2*10**6):
         wt1 = MPI.Wtime()
         req = comm.Isend([data,i,MPI.DOUBLE], dest=1, tag=23)
         req.wait()
-
-
     #receiver
     elif rank == 1:
         data = numpy.empty(i, dtype=numpy.double)
