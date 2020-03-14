@@ -20,13 +20,18 @@ while(i<=2*10**6):
         data = numpy.arange(i, dtype=numpy.double)
         # set time start to send
         wt1 = MPI.Wtime()
-        comm.Send(data, dest=1, tag=23)
+        req = comm.Isend([data,i,MPI.DOUBLE], dest=1, tag=23)
+        req.wait()
+
+
     #receiver
     elif rank == 1:
         data = numpy.empty(i, dtype=numpy.double)
         wt1 = MPI.Wtime()
         #set time start to receive
-        comm.Recv(data, source=0, tag=23)
+        req = comm.Irecv([data,i,MPI.DOUBLE],source=0,tag=23)
+        req.wait()
+
 
     #wait time
     wt2 = MPI.Wtime() - wt1
