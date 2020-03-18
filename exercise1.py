@@ -2,10 +2,10 @@ from mpi4py import MPI
 import numpy
 import sys
 
-
+op = MPI.Op.Create()
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
-
+print("topology",comm.Get_topology())
 from prettytable import PrettyTable
 
 #table to write test
